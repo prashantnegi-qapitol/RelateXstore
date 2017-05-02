@@ -70,8 +70,7 @@ public class CreateDealMethods extends SelectBrowser {
 
 		if(pad.getdealName().equals("Buy X Get X"))
 		{
-			pad.clickOnNewSet();
-			Thread.sleep(500);
+			
 			pad.enterDataToThrusholdTypeField(thresholdType);
 			Thread.sleep(500);
 			pad.enterDataToThrusholdStyleField(thresholdStyle);

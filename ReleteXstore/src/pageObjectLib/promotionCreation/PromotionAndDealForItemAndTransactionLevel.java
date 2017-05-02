@@ -117,10 +117,12 @@ public class PromotionAndDealForItemAndTransactionLevel {
 
 	@FindBy(xpath=".//*[@id='main']//div/div/div/div/div[8]/div/div/div[2]/a[1]")
 	public WebElement clickHere;
+	
 	@FindBy(xpath=".//*[@id='main']//div/div[2]/div/div/div/div/div[6]/div[3]/div/div[2]/a[1]")
 	public WebElement clickHere2;
 	@FindBy(xpath=".//*[@id='main']//div[3]/div/div[2]/div/div/div/div/div[7]/div[2]/a[1]")
 	public WebElement clickHere3;
+	
 	//	************************Promotion creation***********************************************************************
 	@FindBy(xpath=".//*[@id='main']//label[contains(text(),'Product')]")
 	public WebElement productRadioButton;
@@ -212,6 +214,8 @@ public class PromotionAndDealForItemAndTransactionLevel {
 		closeTab.click();
 	}
 
+	
+	
 	public String getId(){
 		return id.getText();
 	}

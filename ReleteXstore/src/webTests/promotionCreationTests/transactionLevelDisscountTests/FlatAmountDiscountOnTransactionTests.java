@@ -13,14 +13,14 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import pageAction.LoginMethods;
-import pageAction.promotionCreationMethods.itemLevelDiscountMethods.CreateDealMethods;
-import pageAction.promotionCreationMethods.itemLevelDiscountMethods.CreatePromotionMethods;
+import pageAction.promotionCreationMethods.CreatePromotionMethods;
+import pageAction.promotionCreationMethods.transactionLevelDiscountMethods.CreateTransactionLevelDealMethods;
 import utills.SelectBrowser;
 
 public class FlatAmountDiscountOnTransactionTests {
 	LoginMethods lm;
 	WebDriver driver;
-	CreateDealMethods cd;
+	CreateTransactionLevelDealMethods cd;
 	CreatePromotionMethods cpm;
 	String id;
 	@BeforeClass
@@ -28,7 +28,7 @@ public class FlatAmountDiscountOnTransactionTests {
 		driver= SelectBrowser.getBrowser();
 		lm=PageFactory.initElements(driver, LoginMethods.class);
 		cpm= PageFactory.initElements(driver, CreatePromotionMethods.class);
-		cd= PageFactory.initElements(driver, CreateDealMethods.class);
+		cd= PageFactory.initElements(driver, CreateTransactionLevelDealMethods.class);
 		lm.login();
 		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 		driver.manage().window().maximize();

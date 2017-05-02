@@ -13,8 +13,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import pageAction.LoginMethods;
+import pageAction.promotionCreationMethods.CreatePromotionMethods;
 import pageAction.promotionCreationMethods.itemLevelDiscountMethods.CreateDealMethods;
-import pageAction.promotionCreationMethods.itemLevelDiscountMethods.CreatePromotionMethods;
 import utills.SelectBrowser;
 
 public class ItemLevelDiscountOnAllProductTest {
@@ -22,6 +22,7 @@ public class ItemLevelDiscountOnAllProductTest {
 	LoginMethods lm;
 	WebDriver driver;
 	CreateDealMethods cd;
+	String id;
 	CreatePromotionMethods itm;
 	@BeforeClass
 	public void beforeClass() throws Exception{
@@ -33,20 +34,20 @@ public class ItemLevelDiscountOnAllProductTest {
 		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 	}
-	//	@Test
+	@Test(priority=1)
 	public void dealCreationForItemLevelDiscount() throws BiffException, IOException, Exception{
 		Reporter.log("++++++++++++++++++++Creating deal started++++++++++++++++++++",true);
 		Reporter.log("\n",true);
-		cd.creatingDeal("ItemLevelDiscount","creatingNewDeal");
+		id=cd.creatingDeal("ItemLevelDiscount","creatingNewDeal");
 		Reporter.log("******************Creating Deal Succesfull********************",true);
 		Reporter.log("\n",true);
 	}
 
-	@Test(priority=1)
-	public void createpromotion() throws BiffException, IOException, Exception{
+	@Test(priority=2)
+	public void createPromotion() throws BiffException, IOException, Exception{
 		Reporter.log("++++++++++++++++++++Creating promotion started++++++++++++++++++++",true);
 		Reporter.log("\n",true);
-		itm.createPromotions("ItemLevelDiscount","creatingNewPromotion");
+		itm.createPromotions("ItemLevelDiscount","creatingNewPromotion",id);
 		Reporter.log("******************Creating Promotion Succesfull********************",true);
 		Reporter.log("\n",true);
 	}

@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import pageAction.LoginMethods;
-import pageAction.promotionCreationMethods.itemLevelDiscountMethods.CreatePromotionMethods;
+import pageAction.promotionCreationMethods.CreatePromotionMethods;
 import pageAction.promotionCreationMethods.itemLevelDiscountMethods.CreateTieredDiscountDealMethods;
 import utills.SelectBrowser;
 
