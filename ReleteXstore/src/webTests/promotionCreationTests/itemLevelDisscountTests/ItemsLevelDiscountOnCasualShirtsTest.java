@@ -13,8 +13,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import pageAction.LoginMethods;
-import pageAction.promotionCreationMethods.ItemLevelDiscount.CreateDealMethods;
-import pageAction.promotionCreationMethods.ItemLevelDiscount.CreatePromotionMethods;
+import pageAction.promotionCreationMethods.itemLevelDiscountMethods.CreateDealMethods;
+import pageAction.promotionCreationMethods.itemLevelDiscountMethods.CreatePromotionMethods;
 import utills.SelectBrowser;
 
 public class ItemsLevelDiscountOnCasualShirtsTest {
