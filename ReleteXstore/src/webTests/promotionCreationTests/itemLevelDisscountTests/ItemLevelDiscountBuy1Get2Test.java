@@ -22,8 +22,11 @@ public class ItemLevelDiscountBuy1Get2Test {
 	WebDriver driver;
 	CreateDealMethods cd;
 	CreatePromotionMethods itm;
+	String id;
 	@BeforeClass
 	public void beforeClass() throws Exception{
+		Reporter.log("++++++++++++++++++++Before Class++++++++++++++++++++",true);
+		Reporter.log("\n",true);
 		driver= SelectBrowser.getBrowser();
 		lm=PageFactory.initElements(driver, LoginMethods.class);
 		itm= PageFactory.initElements(driver, CreatePromotionMethods.class);
@@ -31,30 +34,36 @@ public class ItemLevelDiscountBuy1Get2Test {
 		lm.login();
 		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
+		Reporter.log("\n",true);
+		Reporter.log("******************Before Class Succesfull********************",true);
+		
 	}
-	//	@Test
+	@Test(priority=1)
 	public void dealCreationForItemLevelDiscount() throws BiffException, IOException, Exception{
-		Reporter.log("++++++++++++++++++++Creating deal started++++++++++++++++++++",true);
+		Reporter.log("++++++++++++++++++++Creating Buy X Get Y deal for Percent Amount++++++++++++++++++++",true);
 		Reporter.log("\n",true);
-		cd.creatingDeal("ItemLevelDiscount","creatingNewDeal");
-		Reporter.log("******************Creating Deal Succesfull********************",true);
+		id=cd.creatingDeal("ItemLevelDiscount" , "BuyXGetYDealWithPercentAmount");
 		Reporter.log("\n",true);
+		Reporter.log("******************Creating  Buy X Get Y  Deal Succesfull********************",true);
+
 	}
 
-	@Test(priority=1)
-	public void createpromotion() throws BiffException, IOException, Exception{
-		Reporter.log("++++++++++++++++++++Creating promotion started++++++++++++++++++++",true);
+	@Test(priority=2)
+	public void createPromotion() throws BiffException, IOException, Exception{
+		Reporter.log("++++++++++++++++++++Creating promotion for Buy X Get Y deal and Percent Amount++++++++++++++++++++",true);
 		Reporter.log("\n",true);
-		itm.createPromotions("ItemLevelDiscount","creatingNewPromotion");
-		Reporter.log("******************Creating Promotion Succesfull********************",true);
+		itm.createPromotions("ItemLevelDiscount","BuyXGetYPromotionWithPercentAmount",id);
 		Reporter.log("\n",true);
+		Reporter.log("******************Creating Promotion for  Buy X Get Y deal Succesfull********************",true);
+
 	}
 	@AfterClass
 	public void afterclass(){
 		Reporter.log("++++++++++++++++++++After Class started++++++++++++++++++++",true);
 		Reporter.log("\n",true);
 		driver.quit();
-		Reporter.log("******************After Class Succesfull********************",true);
 		Reporter.log("\n",true);
+		Reporter.log("******************After Class Succesfull********************",true);
+		
 	}
 }

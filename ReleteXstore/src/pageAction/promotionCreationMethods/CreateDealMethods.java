@@ -50,6 +50,7 @@ public class CreateDealMethods extends SelectBrowser {
 		String maxQuantity=record[16].getContents();
 		String pagination = record[17].getContents();
 		String hierchy= record[18].getContents();
+
 		hp.clickOnCompaign();
 		hp.clickOnProductDealDefination();
 		pad.enterDataToPagination(pagination);
@@ -66,28 +67,95 @@ public class CreateDealMethods extends SelectBrowser {
 		pad.clickOnNext();
 		pad.enterDataToSubTotalMinimumField(subtotalMin);
 		pad.enterDataToSubToatalMaximumField(subtotalMax);
-		Thread.sleep(500);
-		pad.enterDataToThrusholdTypeField(thresholdType);
-		Thread.sleep(500);
-		pad.enterDataToThrusholdStyleField(thresholdStyle);
-		pad.enterDataToThrushold(threshold);
-		pad.clickOnclickHere();
-		Thread.sleep(500);
-		pad.enterdataToHierchyLevel(hierchy);
-		Thread.sleep(500);
-		pad.clickLevel();
-		pad.clickOnAdd();
-		pad.clickOnClose();
-		Thread.sleep(500);
-		pad.clickOnNext();
-		Thread.sleep(500);
-		pad.enterDataToPriorityField(priority);
-		pad.enterDataToMaximumAwardPointField(maxAwardsPoint);
-		pad.enterDataToDealCountField(dealCountLimit);
-		Thread.sleep(500);
-		pad.enterDataToDiscountTypeField(discountType);
-		pad.enterDataToDiscountValueField(discountValue);
-		pad.enterDataToMaxQuantityField(maxQuantity);
+
+		if(pad.getdealName().equals("Buy X Get X"))
+		{
+			pad.clickOnNewSet();
+			Thread.sleep(500);
+			pad.enterDataToThrusholdTypeField(thresholdType);
+			Thread.sleep(500);
+			pad.enterDataToThrusholdStyleField(thresholdStyle);
+			pad.enterDataToThrushold(threshold);
+			pad.clickOnclickHere();
+			Thread.sleep(500);
+			pad.enterdataToHierchyLevel(hierchy);
+			Thread.sleep(500);
+			pad.clickLevel();
+			pad.clickOnAdd();
+			pad.clickOnClose();
+			Thread.sleep(500);
+			pad.clickOnNext();
+			Thread.sleep(500);
+			pad.enterDataToPriorityField(priority);
+			pad.enterDataToMaximumAwardPointField(maxAwardsPoint);
+			pad.enterDataToDealCountField(dealCountLimit);
+			Thread.sleep(500);
+			String awardQantity= record[19].getContents();
+			pad.enterDataToAwardQantity(awardQantity);
+			pad.enterDataToDiscountTypeField2(discountType);
+			pad.enterDataToDiscountValueField2(discountValue);
+			pad.enterDataToMaxQuantityField2(maxQuantity);
+		}
+		else if(pad.getdealName().equals("Buy X Get Y")){
+			pad.clickOnNewSet();
+			Thread.sleep(500);
+			pad.enterDataToThrusholdTypeField(thresholdType);
+			Thread.sleep(500);
+			pad.enterDataToThrusholdStyleField(thresholdStyle);
+			pad.enterDataToThrushold(threshold);
+			Thread.sleep(500);
+			pad.clickOnclickHere2();
+			Thread.sleep(500);
+			pad.enterdataToHierchyLevel(hierchy);
+			Thread.sleep(500);
+			pad.clickLevel();
+			pad.clickOnAdd();
+			pad.clickOnClose();
+			Thread.sleep(500);
+			pad.clickOnNext();
+			Thread.sleep(500);
+			pad.enterDataToPriorityField(priority);
+			pad.enterDataToMaximumAwardPointField(maxAwardsPoint);
+			pad.enterDataToDealCountField(dealCountLimit);
+			Thread.sleep(500);
+			pad.clickOnclickHere3();
+			Thread.sleep(500);
+			pad.enterdataToHierchyLevel(hierchy);
+			Thread.sleep(500);
+			pad.clickLevel();
+			pad.clickOnAdd();
+			pad.clickOnClose();
+			Thread.sleep(500);
+			String awardQantity= record[19].getContents();
+			pad.enterDataToAwardQantity(awardQantity);
+			pad.enterDataToDiscountTypeField2(discountType);
+			pad.enterDataToDiscountValueField2(discountValue);
+			pad.enterDataToMaxQuantityField2(maxQuantity);
+		}
+		else{
+			Thread.sleep(500);
+			pad.enterDataToThrusholdTypeField(thresholdType);
+			Thread.sleep(500);
+			pad.enterDataToThrusholdStyleField(thresholdStyle);
+			pad.enterDataToThrushold(threshold);
+			pad.clickOnclickHere();
+			Thread.sleep(500);
+			pad.enterdataToHierchyLevel(hierchy);
+			Thread.sleep(500);
+			pad.clickLevel();
+			pad.clickOnAdd();
+			pad.clickOnClose();
+			Thread.sleep(500);
+			pad.clickOnNext();
+			Thread.sleep(500);
+			pad.enterDataToPriorityField(priority);
+			pad.enterDataToMaximumAwardPointField(maxAwardsPoint);
+			pad.enterDataToDealCountField(dealCountLimit);
+			Thread.sleep(500);
+			pad.enterDataToDiscountTypeField(discountType);
+			pad.enterDataToDiscountValueField(discountValue);
+			pad.enterDataToMaxQuantityField(maxQuantity);
+		}
 		pad.clickOnNext();
 		Thread.sleep(500);
 		pad.clickonSaveButton();
@@ -103,7 +171,7 @@ public class CreateDealMethods extends SelectBrowser {
 				break;
 			}
 		}while(dealList.size()>i);
-		
+
 		Assert.assertTrue(flag, "deal did not created some error occurs while creating deal ");
 		Reporter.log("************ Test pass :: Deal succesfully created ***********",true);
 		pad.closetab();

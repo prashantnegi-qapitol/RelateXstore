@@ -10,7 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
 import utills.WebCommonMethods;
 
@@ -66,7 +65,8 @@ public class PromotionAndDealForItemAndTransactionLevel {
 	public WebElement thrusholdfield;
 	@FindBy(xpath=".//*[@id='main']//label[contains(text(),'Untargeted')]")
 	public WebElement label;
-
+	@FindBy(xpath=".//*[@id='main']//a[contains(text(),'New Set')]")
+	public WebElement newSet;
 	@FindBy(xpath=".//*[@id='main']//div[2]/div/table/tbody/tr/td[2]/select")
 	public WebElement priorityField;
 
@@ -79,11 +79,20 @@ public class PromotionAndDealForItemAndTransactionLevel {
 	@FindBy(xpath=".//div[6]/div[1]/div/div[1]/table/tbody/tr/td[2]/select")
 	public WebElement discountTypeField;
 
+	@FindBy(xpath=".//div[6]/div[1]/div/div[1]/table/tbody/tr/td[4]/select")
+	public WebElement discountTypeField2;
+
 	@FindBy(xpath=".//*[@id='main']//div[6]/div[1]/div/div[1]/table/tbody/tr/td[4]/input")
 	public WebElement discountValueField;
 
+	@FindBy(xpath=".//*[@id='main']//div[6]/div[1]/div/div[1]/table/tbody/tr/td[6]/input")
+	public WebElement discountValueField2;
+
 	@FindBy(xpath=".//*[@id='main']//div/div[6]/div[1]/div/div[1]/table/tbody/tr/td[6]/input")
 	public WebElement maxQuantityfield;
+
+	@FindBy(xpath=".//*[@id='main']//div/div[6]/div[1]/div/div[1]/table/tbody/tr/td[8]/input")
+	public WebElement maxQuantityfield2;
 
 	@FindBy(xpath=".//*[@id='gwt-uid-70']")
 	public WebElement includReadLineCheckBox;
@@ -108,10 +117,11 @@ public class PromotionAndDealForItemAndTransactionLevel {
 
 	@FindBy(xpath=".//*[@id='main']//div/div/div/div/div[8]/div/div/div[2]/a[1]")
 	public WebElement clickHere;
-
-
+	@FindBy(xpath=".//*[@id='main']//div/div[2]/div/div/div/div/div[6]/div[3]/div/div[2]/a[1]")
+	public WebElement clickHere2;
+	@FindBy(xpath=".//*[@id='main']//div[3]/div/div[2]/div/div/div/div/div[7]/div[2]/a[1]")
+	public WebElement clickHere3;
 	//	************************Promotion creation***********************************************************************
-	//@FindBy(xpath=".//*[@id='gwt-uid-42']")
 	@FindBy(xpath=".//*[@id='main']//label[contains(text(),'Product')]")
 	public WebElement productRadioButton;
 
@@ -160,10 +170,14 @@ public class PromotionAndDealForItemAndTransactionLevel {
 	@FindBy(xpath=".//*[@id='main']//div[3]/div/div[2]/div/div/table/tbody/tr/td[2]")
 	public List<WebElement> pomotionId;
 
-
+	@FindBy(xpath=".//*[@id='main']//tbody/tr[2]/td[2]/div/table/tbody/tr[2]/td[2]")
+	public WebElement dealName;
 
 	@FindBy(xpath=".//*[@id='main']//div[3]/div/div[2]/div/div/table/tbody/tr[2]/td[2]")
 	public WebElement promotionName;
+
+	@FindBy(xpath=".//div[2]/table/tbody/tr[2]/td[4]/select")
+	public WebElement dealType;
 
 
 	@FindBy(xpath="html/body/div[5]/div/table/tbody/tr[2]/td[2]/div/div/table/tbody/tr/td/div/div[2]/table/tbody/tr[1]/td[6]/select/option[2]")
@@ -184,20 +198,24 @@ public class PromotionAndDealForItemAndTransactionLevel {
 	@FindBy(xpath=".//*[@id='main']/div/div[2]/div/div[3]/div/div[3]/div/div[3]/div/div[2]/div/div[2]/div/div[3]/div/div[3]/div/div/div[2]/div/div/table/tbody/tr[2]/td[1]")
 	public WebElement id;
 
-	
 	@FindBy(xpath=".//*[@id='main']/div/div[2]/div/div[3]/div/div[3]/div/div[2]/div/div[1]/div/div/div[3]/table/tbody/tr/td[2]")
 	public WebElement closeTab;
-	
+
+	@FindBy(xpath=".//*[@id='main']//div/div[1]/table/tbody/tr/td[2]/input")
+	public WebElement awardquantityField;
+
+
+	public void enterDataToAwardQantity(String key){
+		awardquantityField.sendKeys(key);
+	}
 	public void closetab(){
 		closeTab.click();
 	}
-	
+
 	public String getId(){
 		return id.getText();
 	}
 
-	@FindBy(xpath=".//div[2]/table/tbody/tr[2]/td[4]/select")
-	public WebElement dealType;
 
 	public void enterDataToDealType(String key) throws AWTException, InterruptedException{
 		dealType.sendKeys(key);
@@ -206,6 +224,10 @@ public class PromotionAndDealForItemAndTransactionLevel {
 		robot.keyRelease(KeyEvent.VK_ENTER);
 	}
 
+
+	public void clickOnNewSet(){
+		newSet.click();
+	}
 	public void clickLevel() throws InterruptedException{
 		level.click();
 
@@ -229,6 +251,14 @@ public class PromotionAndDealForItemAndTransactionLevel {
 
 	public void clickOnclickHere(){
 		clickHere.click();
+		wcm.waitForVisibilityOfWebElement(add);
+	}
+	public void clickOnclickHere2(){
+		clickHere2.click();
+		wcm.waitForVisibilityOfWebElement(add);
+	}
+	public void clickOnclickHere3(){
+		clickHere3.click();
 		wcm.waitForVisibilityOfWebElement(add);
 	}
 	public void enterDealID(String id) throws InterruptedException{
@@ -364,9 +394,9 @@ public class PromotionAndDealForItemAndTransactionLevel {
 	}
 
 	public void clickOnNext() throws InterruptedException{
-
+		Thread.sleep(500);
 		nextButton.click();
-		
+
 	}
 	public void enterDataToSubTotalMinimumField(String key){
 		subTotalMinimumfield.sendKeys(key);	
@@ -381,6 +411,7 @@ public class PromotionAndDealForItemAndTransactionLevel {
 		thrusholdTypefield.sendKeys(key);	
 	}
 	public void enterDataToThrushold(String key){
+		thrusholdfield.clear();
 		thrusholdfield.sendKeys(key);	
 	}
 
@@ -393,22 +424,36 @@ public class PromotionAndDealForItemAndTransactionLevel {
 		maximumAwardPointfield.sendKeys(key);	
 	}
 
-	public void enterDataToDealCountField(String key){
+	public void enterDataToDealCountField(String key) throws InterruptedException{
 		dealCountLimitField.sendKeys(key);	
+		Thread.sleep(500);
+	}
+	public String getdealName(){
+		return dealName.getText();
 	}
 
 	public void enterDataToDiscountTypeField(String key){
+
 		discountTypeField.sendKeys(key);	
 	}
+	public void enterDataToDiscountTypeField2(String key){
 
+		discountTypeField2.sendKeys(key);	
+	}
 	public void enterDataToMaxQuantityField(String key){
 		maxQuantityfield.sendKeys(key);	
+	}
+
+	public void enterDataToMaxQuantityField2(String key){
+		maxQuantityfield2.sendKeys(key);	
 	}
 
 	public void enterDataToDiscountValueField(String key){
 		discountValueField.sendKeys(key);	
 	}
-
+	public void enterDataToDiscountValueField2(String key){
+		discountValueField2.sendKeys(key);	
+	}
 	public void clickonIncludeReadLine(){
 		includReadLineCheckBox.click();
 	}
@@ -426,6 +471,34 @@ public class PromotionAndDealForItemAndTransactionLevel {
 		wcm.waitForVisibilityOfWebElement(selectNoOfElement);
 	}
 
+	//********************Tiered Discount***********************************************************************
+	
+	
+	@FindBy(xpath=".//*[@id='main']//div[2]/div/div[2]/div/div[3]/div/div[3]/div/div[2]/div/div/div/table/tbody/tr[2]/td[3]/input")
+	public WebElement buy1;
+	@FindBy(xpath=".//*[@id='main']//div[2]/div/div[2]/div/div[3]/div/div[3]/div/div[2]/div/div/div/table/tbody/tr[3]/td[5]/input")
+	public WebElement buy2;
 
-
+	@FindBy(xpath=".//*[@id='main']//div[2]/div/div[2]/div/div[3]/div/div[3]/div/div[2]/div/div/div/table/tbody/tr[2]/td[3]/input")
+	public WebElement discountAmmount;
+	@FindBy(xpath=".//*[@id='main']//div[2]/div/div[2]/div/div[3]/div/div[3]/div/div[2]/div/div/div/table/tbody/tr[3]/td[5]/input")
+	public WebElement discountAmmount2;
+	@FindBy(xpath="	.//*[@id='main']//div/div[5]/table/tbody/tr/td[6]/select")
+	public WebElement discountTypeField1;
+	public void enterDataToDiscountAmmount(String key){
+		discountAmmount.sendKeys(key);
+	}
+	public void enterDataToDiscountAmmount1(String key){
+		discountAmmount2.sendKeys(key);
+	}
+	public void enterDataToBuy1(String key){
+		buy1.sendKeys(key);
+	}
+	public void enterDataToBuy2(String key){
+		buy2.sendKeys(key);
+	}
+	
+	public void enterDataToDiscountType(String key){
+		discountTypeField1.sendKeys(key);
+	}
 }
