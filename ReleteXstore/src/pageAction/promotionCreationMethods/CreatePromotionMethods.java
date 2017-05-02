@@ -30,7 +30,7 @@ public class CreatePromotionMethods extends SelectBrowser {
 		hp= PageFactory.initElements(driver, HomePage.class);
 	}
 
-	public void createPromotions(String sheetName, String uniqueName) throws BiffException, IOException, Exception{
+	public void createPromotions(String sheetName, String uniqueName,String k) throws BiffException, IOException, Exception{
 
 		Cell record [] =FilesAndFolders.readExcel(sheetName, uniqueName);
 		String name= record[1].getContents();
@@ -40,6 +40,7 @@ public class CreatePromotionMethods extends SelectBrowser {
 		String budgetAmount = record[6].getContents();
 		String actualAmount = record[7].getContents();
 		String key = record[9].getContents();
+		String dealType= record[10].getContents();
 		hp.clickOnCompaign();
 		hp.clickOnProductDefination();
 		pad.enterDataToPagination(key);
@@ -54,21 +55,36 @@ public class CreatePromotionMethods extends SelectBrowser {
 			}else{
 				flag1=false;
 			}
+	
 		}while(flag1);
+		Thread.sleep(500);
 		pad.clickOnCreateButton();
+		Thread.sleep(500);
 		pad.clickOnProductRadioButton();
+		Thread.sleep(500);
 		pad.clickOnNext();
+		Thread.sleep(500);
 		pad.enterNameTextField(name);
 		pad.enterDescriptionField(descreption);
+		Thread.sleep(500);
 		pad.clickOnNext();
+		Thread.sleep(500);
 		pad.clickOnNext();
+		Thread.sleep(500);
 		pad.clickOnCalender();
 		pad.clickOnNext();
+		Thread.sleep(500);
 		pad.clickOnNext();
+		Thread.sleep(500);
 		pad.clickOnAddButton();
 		pad.enterMaxDealId(maxDealId);
+		Thread.sleep(500);
 		pad.enterIntendedUseField();
-		pad.enterDealID();
+		Thread.sleep(500);
+		pad.enterDataToDealType(key);
+		Thread.sleep(500);
+		pad.enterDealID(k);
+		Thread.sleep(500);
 		pad.clickOnAddButtoninPopUp();
 		Thread.sleep(1000);
 		pad.clickOnNext();
@@ -82,8 +98,10 @@ public class CreatePromotionMethods extends SelectBrowser {
 		pad.clickOnNext();
 		pad.clickOnApprove();
 		pad.clickOnNext();
+		Thread.sleep(1000);
 		pad.clickonSaveButton();
 		pad.enterDataToPagination(key);
+		
 		List<String> promotionList1=pad.getListOfPromotions();
 		String actual=pad.getPromotionName();
 
@@ -102,7 +120,7 @@ public class CreatePromotionMethods extends SelectBrowser {
 
 		Assert.assertTrue(flag, "New Promotion did not created");
 		Assert.assertEquals(actual, name,"actual result and expected result did  not match");
-		Reporter.log("New promotion created succesfully with name as "+actual+" ",true);
+		Reporter.log("New promotion created succesfully with name as "+actual+" with dela id "+k+" ",true);
 
 	}
 

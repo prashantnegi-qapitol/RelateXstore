@@ -23,8 +23,11 @@ public class PercentageDiscountOnItemLevelTest
 	WebDriver driver;
 	CreateDealMethods cd;
 	CreatePromotionMethods itm;
+	String id;
 	@BeforeClass
 	public void beforeClass() throws Exception{
+		Reporter.log("++++++++++++++++++++Before Class++++++++++++++++++++",true);
+		Reporter.log("\n",true);
 		driver= SelectBrowser.getBrowser();
 		lm=PageFactory.initElements(driver, LoginMethods.class);
 		itm= PageFactory.initElements(driver, CreatePromotionMethods.class);
@@ -32,30 +35,36 @@ public class PercentageDiscountOnItemLevelTest
 		lm.login();
 		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
+		Reporter.log("\n",true);
+		Reporter.log("******************Before Class Succesfull********************",true);
+		
 	}
-	//	@Test
+	@Test(priority=1)
 	public void dealCreationForItemLevelDiscount() throws BiffException, IOException, Exception{
-		Reporter.log("++++++++++++++++++++Creating deal started++++++++++++++++++++",true);
+		Reporter.log("++++++++++++++++++++Creating deal for Percent Amount++++++++++++++++++++",true);
 		Reporter.log("\n",true);
-		cd.creatingDeal("ItemLevelDiscount","creatingNewDeal");
+		id=cd.creatingDeal("ItemLevelDiscount" , "DealWithPercentAmount");
+		Reporter.log("\n",true);
 		Reporter.log("******************Creating Deal Succesfull********************",true);
-		Reporter.log("\n",true);
+
 	}
 
-	@Test(priority=1)
-	public void createpromotion() throws BiffException, IOException, Exception{
-		Reporter.log("++++++++++++++++++++Creating promotion started++++++++++++++++++++",true);
+	@Test(priority=2)
+	public void createPromotion() throws BiffException, IOException, Exception{
+		Reporter.log("++++++++++++++++++++Creating promotion for Percent Amount++++++++++++++++++++",true);
 		Reporter.log("\n",true);
-		itm.createPromotions("ItemLevelDiscount","creatingNewPromotion");
+		itm.createPromotions("ItemLevelDiscount","PromotionWithPercentAmount",id);
+		Reporter.log("\n",true);
 		Reporter.log("******************Creating Promotion Succesfull********************",true);
-		Reporter.log("\n",true);
+
 	}
 	@AfterClass
 	public void afterclass(){
 		Reporter.log("++++++++++++++++++++After Class started++++++++++++++++++++",true);
 		Reporter.log("\n",true);
 		driver.quit();
-		Reporter.log("******************After Class Succesfull********************",true);
 		Reporter.log("\n",true);
+		Reporter.log("******************After Class Succesfull********************",true);
+		
 	}
 }

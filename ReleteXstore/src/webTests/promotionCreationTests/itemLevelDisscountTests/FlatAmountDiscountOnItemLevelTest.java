@@ -18,11 +18,11 @@ import pageAction.promotionCreationMethods.CreatePromotionMethods;
 import utills.SelectBrowser;
 
 public class FlatAmountDiscountOnItemLevelTest {
-
 	LoginMethods lm;
 	WebDriver driver;
 	CreateDealMethods cd;
 	CreatePromotionMethods itm;
+	String id;
 	@BeforeClass
 	public void beforeClass() throws Exception{
 		driver= SelectBrowser.getBrowser();
@@ -32,21 +32,22 @@ public class FlatAmountDiscountOnItemLevelTest {
 		lm.login();
 		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
+		
 	}
-	//	@Test
+		@Test(priority=1)
 	public void dealCreationForItemLevelDiscount() throws BiffException, IOException, Exception{
-		Reporter.log("++++++++++++++++++++Creating deal started++++++++++++++++++++",true);
+		Reporter.log("++++++++++++++++++++Creating deal for Flat Amount ++++++++++++++++++++",true);
 		Reporter.log("\n",true);
-		cd.creatingDeal("ItemLevelDiscount","creatingNewDeal");
+		 id=cd.creatingDeal("ItemLevelDiscount" , "DealWithFlatAmount");
 		Reporter.log("******************Creating Deal Succesfull********************",true);
 		Reporter.log("\n",true);
 	}
 
-	@Test(priority=1)
-	public void createpromotion() throws BiffException, IOException, Exception{
-		Reporter.log("++++++++++++++++++++Creating promotion started++++++++++++++++++++",true);
+	@Test(priority=2)
+	public void createPromotion() throws BiffException, IOException, Exception{
+		Reporter.log("++++++++++++++++++++Creating promotion for Flat Amount++++++++++++++++++++",true);
 		Reporter.log("\n",true);
-		itm.createPromotions("ItemLevelDiscount","creatingNewPromotion");
+		itm.createPromotions("ItemLevelDiscount","PromotionWithFlatAmount",id);
 		Reporter.log("******************Creating Promotion Succesfull********************",true);
 		Reporter.log("\n",true);
 	}
