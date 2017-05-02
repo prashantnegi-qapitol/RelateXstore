@@ -13,9 +13,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import pageAction.LoginMethods;
-import pageAction.promotionCreationMethods.CreateDealMethods;
-import pageAction.promotionCreationMethods.CreatePromotionMethods;
-import pageAction.promotionCreationMethods.CreateTieredDiscountDealMethods;
+import pageAction.promotionCreationMethods.ItemLevelDiscount.CreateDealMethods;
+import pageAction.promotionCreationMethods.ItemLevelDiscount.CreatePromotionMethods;
+import pageAction.promotionCreationMethods.ItemLevelDiscount.CreateTieredDiscountDealMethods;
 import utills.SelectBrowser;
 
 public class Buy3Get50PercentOffTest {

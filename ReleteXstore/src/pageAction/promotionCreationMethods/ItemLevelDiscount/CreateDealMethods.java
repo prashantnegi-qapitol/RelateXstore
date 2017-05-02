@@ -1,4 +1,4 @@
-package pageAction.promotionCreationMethods;
+package pageAction.promotionCreationMethods.ItemLevelDiscount;
 
 import java.io.IOException;
 import java.util.List;

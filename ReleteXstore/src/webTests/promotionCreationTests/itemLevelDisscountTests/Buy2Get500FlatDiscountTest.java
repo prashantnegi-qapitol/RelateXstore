@@ -13,8 +13,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import pageAction.LoginMethods;
-import pageAction.promotionCreationMethods.CreatePromotionMethods;
-import pageAction.promotionCreationMethods.CreateTieredDiscountDealMethods;
+import pageAction.promotionCreationMethods.ItemLevelDiscount.CreatePromotionMethods;
+import pageAction.promotionCreationMethods.ItemLevelDiscount.CreateTieredDiscountDealMethods;
 import utills.SelectBrowser;
 
 public class Buy2Get500FlatDiscountTest {
